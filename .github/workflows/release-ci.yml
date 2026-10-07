@@ -77,7 +77,8 @@ jobs:
 
       - name: Save changelog to file
         run: |
-          echo "${{ steps.build_changelog.outputs.changelog }}" > changelog.md
+          printf '%s' "${{ steps.build_changelog.outputs.changelog }}" > changelog.md
+        shell: bash
 
       - name: Create Stable release
         uses: softprops/action-gh-release@v3
