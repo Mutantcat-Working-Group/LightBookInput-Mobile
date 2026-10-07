@@ -174,7 +174,7 @@ class SetupActivity : FragmentActivity() {
         if (SetupPage.hasUndonePage()) {
             NotificationCompat
                 .Builder(this, CHANNEL_ID)
-                .setSmallIcon(R.drawable.ic_LightBookInput_status)
+                .setSmallIcon(R.drawable.ic_lightbookinput_status)
                 .setContentTitle(getText(R.string.LightBookInput_app_name))
                 .setContentText(getText(R.string.setup__notify_hint))
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
