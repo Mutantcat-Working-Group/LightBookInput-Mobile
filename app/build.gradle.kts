@@ -25,8 +25,8 @@ android {
         applicationId = "org.mutantcat.lightbookinput"
         minSdk = 21
         targetSdk = 37
-        versionCode = 20261005
-        versionName = "1.0.20261005"
+        versionCode = 20261007
+        versionName = "1.0.20261007"
 
         multiDexEnabled = true
         buildConfigField("String", "BUILDER", "\"${project.builder}\"")
