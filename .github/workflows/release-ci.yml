@@ -75,11 +75,15 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Save changelog to file
+        run: |
+          echo "${{ steps.build_changelog.outputs.changelog }}" > changelog.md
+
       - name: Create Stable release
         uses: softprops/action-gh-release@v3
         with:
           prerelease: ${{ contains(github.ref_name, 'alpha') || contains(github.ref_name, 'beta') }}
-          body: ${{ steps.build_changelog.outputs.changelog }}
+          body_path: changelog.md
           files: |
             app/build/outputs/apk/debug/*.apk
             app/build/outputs/apk/debug/checksums-sha1.txt
