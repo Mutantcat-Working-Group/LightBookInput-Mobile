@@ -8,7 +8,7 @@ plugins {
     `java-gradle-plugin`
 }
 
-group = "com.osfans.trime.build_logic"
+group = "org.mutantcat.lightbookinput.build_logic"
 
 dependencies {
     compileOnly(libs.android.gradlePlugin)
@@ -19,23 +19,23 @@ dependencies {
 gradlePlugin {
     plugins {
         register("androidAppConvention") {
-            id = "com.osfans.trime.app-convention"
+            id = "org.mutantcat.lightbookinput.app-convention"
             implementationClass = "AndroidAppConventionPlugin"
         }
         register("dataChecksums") {
-            id = "com.osfans.trime.data-checksums"
+            id = "org.mutantcat.lightbookinput.data-checksums"
             implementationClass = "DataChecksumsPlugin"
         }
         register("nativeAppConvention") {
-            id = "com.osfans.trime.native-app-convention"
+            id = "org.mutantcat.lightbookinput.native-app-convention"
             implementationClass = "NativeAppConventionPlugin"
         }
         register("nativeCacheHash") {
-            id = "com.osfans.trime.native-cache-hash"
+            id = "org.mutantcat.lightbookinput.native-cache-hash"
             implementationClass = "NativeCacheHashPlugin"
         }
         register("openccData") {
-            id = "com.osfans.trime.opencc-data"
+            id = "org.mutantcat.lightbookinput.opencc-data"
             implementationClass = "OpenCCDataPlugin"
         }
     }

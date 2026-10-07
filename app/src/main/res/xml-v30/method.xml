@@ -9,11 +9,11 @@ SPDX-License-Identifier: GPL-3.0-or-later
 <input-method xmlns:android="http://schemas.android.com/apk/res/android"
     android:supportsSwitchingToNextInputMethod="true"
     android:supportsInlineSuggestions="true"
-    android:settingsActivity="com.osfans.trime.ui.main.MainActivity">
+    android:settingsActivity="org.mutantcat.lightbookinput.ui.main.MainActivity">
 
     <!-- Add default system subtype so we can properly set the icon and label -->
-    <subtype android:label="@string/trime_app_slogan"
-        android:name="@string/trime_app_name"
+    <subtype android:label="@string/LightBookInput_app_slogan"
+        android:name="@string/LightBookInput_app_name"
         android:icon="@mipmap/ic_app_icon"
         android:imeSubtypeMode="keyboard"
         android:imeSubtypeExtraValue="AsciiCapable" />

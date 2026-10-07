@@ -13,19 +13,19 @@ SPDX-License-Identifier: GPL-3.0-or-later
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
     <application
-        android:name="com.osfans.trime.TrimeApplication"
+        android:name="org.mutantcat.lightbookinput.LightBookInputApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_app_icon"
-        android:label="@string/trime_app_name"
+        android:label="@string/LightBookInput_app_name"
         android:roundIcon="@mipmap/ic_app_icon_round"
-        android:theme="@style/Theme.TrimeAppTheme"
+        android:theme="@style/Theme.LightBookInputAppTheme"
         android:hasFragileUserData="true"
         tools:targetApi="29">
 
         <service
-            android:name=".ime.core.TrimeInputMethodService"
+            android:name=".ime.core.LightBookInputInputMethodService"
             android:exported="true"
-            android:label="@string/trime_app_name"
+            android:label="@string/LightBookInput_app_name"
             android:permission="android.permission.BIND_INPUT_METHOD">
             <intent-filter>
                 <action android:name="android.view.InputMethod" />
@@ -90,9 +90,9 @@ SPDX-License-Identifier: GPL-3.0-or-later
 
         <!-- Using an activity alias to disable/enable the app icon in the launcher -->
         <activity-alias
-            android:name="com.osfans.trime.MainLauncherAlias"
+            android:name="org.mutantcat.lightbookinput.MainLauncherAlias"
             android:exported="true"
-            android:label="@string/trime_app_name"
+            android:label="@string/LightBookInput_app_name"
             android:launchMode="singleTask"
             android:targetActivity=".ui.main.MainActivity">
             <intent-filter>

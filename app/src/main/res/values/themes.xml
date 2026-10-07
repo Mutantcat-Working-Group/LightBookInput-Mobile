@@ -7,7 +7,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
 -->
 
 <resources>
-    <style name="Theme.TrimeAppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="Theme.LightBookInputAppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>

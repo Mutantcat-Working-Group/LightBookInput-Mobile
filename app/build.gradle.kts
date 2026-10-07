@@ -5,11 +5,11 @@
 @file:Suppress("UnstableApiUsage")
 
 plugins {
-    id("com.osfans.trime.app-convention")
-    id("com.osfans.trime.native-app-convention")
-    id("com.osfans.trime.data-checksums")
-    id("com.osfans.trime.native-cache-hash")
-    id("com.osfans.trime.opencc-data")
+    id("org.mutantcat.lightbookinput.app-convention")
+    id("org.mutantcat.lightbookinput.native-app-convention")
+    id("org.mutantcat.lightbookinput.data-checksums")
+    id("org.mutantcat.lightbookinput.native-cache-hash")
+    id("org.mutantcat.lightbookinput.opencc-data")
     alias(libs.plugins.aboutlibraries)
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.kotlin.parcelize)
@@ -17,16 +17,16 @@ plugins {
 }
 
 android {
-    namespace = "com.osfans.trime"
+    namespace = "org.mutantcat.lightbookinput"
     compileSdk = 37
     buildToolsVersion = "36.0.0"
 
     defaultConfig {
-        applicationId = "com.osfans.trime"
+        applicationId = "org.mutantcat.lightbookinput"
         minSdk = 21
         targetSdk = 37
-        versionCode = 20261101
-        versionName = "3.3.13"
+        versionCode = 20261005
+        versionName = "1.0.20261005"
 
         multiDexEnabled = true
         buildConfigField("String", "BUILDER", "\"${project.builder}\"")
