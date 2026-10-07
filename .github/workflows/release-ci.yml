@@ -8,6 +8,8 @@ on:
   push:
     tags:
       - 'v*'
+permissions:
+  contents: write
 env:
   CI_NAME: Release CI
 jobs:
