@@ -9,6 +9,7 @@
     <!-- Input Method Platform Tittle  -->
     <string name="app_name_release">LightBookInput</string>
     <string name="app_name_debug">LightBookInput (Debug)</string>
+    <string name="LightBookInput_app_name">LightBookInput</string>
     <!-- Preference settings -->
     <string name="qq_group_1">LightBookInput QQ group 1</string>
     <string name="qq_group_2">LightBookInput QQ group 2</string>
