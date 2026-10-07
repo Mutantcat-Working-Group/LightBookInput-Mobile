@@ -62,25 +62,16 @@ jobs:
         if: ${{ !steps.jni-cache.outputs.cache-hit }}
         run: cp -R app/build/intermediates/merged_native_libs/debug/mergeDebugNativeLibs/out/lib app/prebuilt
 
-      - name: Build changelog
-        id: build_changelog
-        uses: mikepenz/release-changelog-builder-action@v6
-        with:
-          commitMode: true
-          configurationJson: |
-            {
-              "template": "Change log from #{{FROM_TAG}} to #{{TO_TAG}}: #{{RELEASE_DIFF}}\n#{{UNCATEGORIZED}}",
-              "pr_template": "- [#{{MERGE_SHA}}] - #{{TITLE}}"
-            }
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Save changelog to file
+      - name: Generate changelog
         run: |
-          printf '%s' "$CHANGELOG" > changelog.md
+          {
+            echo "## LightBookInput ${{ github.ref_name }}"
+            echo
+            echo "### Recent Changes"
+            git log -40 --no-merges --pretty=format:"- %s"
+            echo
+          } > changelog.md
         shell: bash
-        env:
-          CHANGELOG: ${{ steps.build_changelog.outputs.changelog }}
 
       - name: Create Stable release
         uses: softprops/action-gh-release@v3
