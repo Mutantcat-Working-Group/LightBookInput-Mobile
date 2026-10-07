@@ -62,8 +62,8 @@ jobs:
         run: make release
 
       - name: Generate checksums
-        working_directory: "app/build/outputs/apk/release/"
         run: |
+          cd app/build/outputs/apk/release/
           sha1sum *.apk > checksums-sha1.txt
           md5sum *.apk > checksums-md5.txt
 
@@ -89,8 +89,7 @@ jobs:
         with:
           prerelease: ${{ contains(github.ref_name, 'alpha') || contains(github.ref_name, 'beta') }}
           body: ${{ steps.build_changelog.outputs.changelog }}
-          working_directory: "app/build/outputs/apk/release/"
           files: |
-            *.apk
-            checksums-sha1.txt
-            checksums-md5.txt
+            app/build/outputs/apk/release/*.apk
+            app/build/outputs/apk/release/checksums-sha1.txt
+            app/build/outputs/apk/release/checksums-md5.txt
