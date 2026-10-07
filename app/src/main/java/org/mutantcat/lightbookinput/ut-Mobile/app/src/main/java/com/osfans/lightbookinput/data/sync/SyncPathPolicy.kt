@@ -137,7 +137,7 @@ object SyncPathPolicy {
     }
 
     private fun cleanSyncDir(syncDir: String): String {
-        val cleaned = syncDir.trim().replace('\\', '/').LightBookInputnd('/')
+        val cleaned = syncDir.trim().replace('\\', '/').replace('/', '/')
         return cleaned.ifEmpty { DEFAULT_SYNC_DIR }
     }
 
