@@ -49,45 +49,18 @@ jobs:
           path: "app/prebuilt"
           key: ${{ runner.os }}-trime-jni-release-${{ steps.cache-hash.outputs.native-cache-hash }}
 
-      - name: Setup Keystore
-        run: |
-          cat << EOF > keystore.properties
-          keyBase64=${{ secrets.SIGNING_KEY }}
-          storePassword=${{ secrets.KEY_STORE_PASSWORD }}
-          keyAlias=${{ secrets.ALIAS }}
-          keyPassword=${{ secrets.KEY_PASSWORD }}
-          EOF
-
-      - name: Convert keystore to JKS format for Java 25 compatibility
-        run: |
-          mkdir -p app/build
-          printf '%s' ${{ secrets.SIGNING_KEY }} | base64 -d > app/build/sign.ks
-          keytool -importkeystore \
-            -srckeystore app/build/sign.ks \
-            -srcstoretype PKCS12 \
-            -destkeystore app/build/sign.jks \
-            -deststoretype JKS \
-            -srcstorepass ${{ secrets.KEY_STORE_PASSWORD }} \
-            -deststorepass ${{ secrets.KEY_STORE_PASSWORD }} \
-            -srckeypass ${{ secrets.KEY_PASSWORD }} \
-            -destkeypass ${{ secrets.KEY_PASSWORD }} \
-            -noprompt
-          rm app/build/sign.ks
-          # Update keystore.properties to use JKS file
-          echo "keyStoreFile=app/build/sign.jks" >> keystore.properties
-
-      - name: Build Trime
-        run: make release
+      - name: Build debug APK
+        run: make debug
 
       - name: Generate checksums
         run: |
-          cd app/build/outputs/apk/release/
+          cd app/build/outputs/apk/debug/
           sha1sum *.apk > checksums-sha1.txt
           md5sum *.apk > checksums-md5.txt
 
       - name: Add JNI cache
         if: ${{ !steps.jni-cache.outputs.cache-hit }}
-        run: cp -R app/build/intermediates/merged_native_libs/release/mergeReleaseNativeLibs/out/lib app/prebuilt
+        run: cp -R app/build/intermediates/merged_native_libs/debug/mergeDebugNativeLibs/out/lib app/prebuilt
 
       - name: Build changelog
         id: build_changelog
@@ -108,6 +81,6 @@ jobs:
           prerelease: ${{ contains(github.ref_name, 'alpha') || contains(github.ref_name, 'beta') }}
           body: ${{ steps.build_changelog.outputs.changelog }}
           files: |
-            app/build/outputs/apk/release/*.apk
-            app/build/outputs/apk/release/checksums-sha1.txt
-            app/build/outputs/apk/release/checksums-md5.txt
+            app/build/outputs/apk/debug/*.apk
+            app/build/outputs/apk/debug/checksums-sha1.txt
+            app/build/outputs/apk/debug/checksums-md5.txt
